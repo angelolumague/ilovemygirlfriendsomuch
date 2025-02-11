@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,7 +47,7 @@
             align-items: center;
             margin-top: 20px;
             position: relative;
-            gap: 15px; /* Ensures spacing between buttons */
+            gap: 15px;
         }
 
         .btn {
@@ -71,10 +71,9 @@
             transition: 0.5s;
             background-color: #ffb6c1;
             color: #ff1493;
-            position: relative; /* Keeps it in the container */
+            position: relative;
         }
 
-        /* Fix layout on small screens */
         @media only screen and (max-width: 480px) {
             .container {
                 max-width: 90%;
@@ -84,7 +83,7 @@
             }
             .buttons {
                 flex-direction: column;
-                gap: 10px; /* Adds space between buttons */
+                gap: 10px;
             }
             .btn {
                 width: 100%;
@@ -108,9 +107,10 @@
             <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
+    
     <script>
         function nextPage() {
-            window.location.href = "valentine-surprise.html";
+            window.location.assign("valentine-surprise.html"); // More reliable redirection
         }
         
         function moveButton() {
