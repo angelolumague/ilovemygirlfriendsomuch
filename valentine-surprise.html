@@ -64,8 +64,12 @@
             var today = new Date();
             var valentineDate = new Date(today.getFullYear(), 1, 14); // February 14
 
+            // Remove time part for accurate comparison
+            today.setHours(0, 0, 0, 0);
+            valentineDate.setHours(0, 0, 0, 0);
+
             if (today < valentineDate) {
-                window.location.href = "too-early.html"; // Redirect to a "Too early" message page
+                window.location.href = "too-early.html"; // Redirect to "Too early" message page
             }
         });
     </script>
