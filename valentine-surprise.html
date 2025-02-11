@@ -68,10 +68,18 @@
             today.setHours(0, 0, 0, 0);
             valentineDate.setHours(0, 0, 0, 0);
 
-            if (today < valentineDate) {
+            // Check if the user accessed the page through a button (has ?access=true in URL)
+            var urlParams = new URLSearchParams(window.location.search);
+            var hasAccess = urlParams.get('access');
+
+            if (today < valentineDate && !hasAccess) {
                 window.location.href = "too-early.html"; // Redirect to "Too early" message page
             }
         });
+
+        function nextPage() {
+            window.location.href = "valentine-surprise.html?access=true"; // Add access flag
+        }
     </script>
 </head>
 <body>
@@ -85,7 +93,7 @@
             <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" class="img-fluid" alt="Cute animated illustration">
         </div>
         <h1>💖 Please open this link on Feb 14 💖</h1>
-        <a href="love-story.html" class="btn btn-custom">Click here to view our Love Story 💕</a>
+        <button class="btn btn-custom" onclick="nextPage()">Yes</button>
     </div>
     
     <!-- Bootstrap JS Bundle -->
