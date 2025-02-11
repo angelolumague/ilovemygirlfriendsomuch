@@ -47,7 +47,7 @@
             align-items: center;
             margin-top: 20px;
             position: relative;
-            gap: 15px;
+            gap: 15px; /* Ensures spacing between buttons */
         }
 
         .btn {
@@ -71,9 +71,10 @@
             transition: 0.5s;
             background-color: #ffb6c1;
             color: #ff1493;
-            position: relative;
+            position: relative; /* Keeps it in the container */
         }
 
+        /* Fix layout on small screens */
         @media only screen and (max-width: 480px) {
             .container {
                 max-width: 90%;
@@ -83,7 +84,7 @@
             }
             .buttons {
                 flex-direction: column;
-                gap: 10px;
+                gap: 10px; /* Adds space between buttons */
             }
             .btn {
                 width: 100%;
@@ -93,42 +94,6 @@
             }
         }
     </style>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var today = new Date();
-            var valentineDate = new Date(today.getFullYear(), 1, 14); // February 14
-
-            // Remove time part for accurate comparison
-            today.setHours(0, 0, 0, 0);
-            valentineDate.setHours(0, 0, 0, 0);
-
-            // Check if the user accessed through "Yes" button (has ?access=true in URL)
-            var urlParams = new URLSearchParams(window.location.search);
-            var hasAccess = urlParams.get('access');
-
-            if (today < valentineDate && !hasAccess) {
-                window.location.href = "too-early.html";
-            }
-        });
-
-        function nextPage() {
-            window.location.href = "valentine-surprise.html?access=true"; // Add ?access=true
-        }
-
-        function moveButton() {
-            var btn = document.getElementById('noButton');
-            var container = document.querySelector('.container');
-
-            var maxX = container.clientWidth - btn.clientWidth;
-            var maxY = container.clientHeight - btn.clientHeight;
-
-            var x = Math.random() * maxX;
-            var y = Math.random() * maxY;
-
-            btn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-    </script>
 </head> 
 <body>
     <div class="container">
@@ -143,5 +108,23 @@
             <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
+    <script>
+        function nextPage() {
+            window.location.href = "valentine-surprise.html";
+        }
+        
+        function moveButton() {
+            var btn = document.getElementById('noButton');
+            var container = document.querySelector('.container');
+
+            var maxX = container.clientWidth - btn.clientWidth;
+            var maxY = container.clientHeight - btn.clientHeight;
+
+            var x = Math.random() * maxX;
+            var y = Math.random() * maxY;
+
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    </script>
 </body> 
 </html>
