@@ -58,18 +58,29 @@
             justify-content: center;
         }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var today = new Date();
+            var valentineDate = new Date(today.getFullYear(), 1, 14); // February 14
+
+            if (today < valentineDate) {
+                window.location.href = "too-early.html"; // Redirect to a "Too early" message page
+            }
+        });
+    </script>
 </head>
 <body>
     <audio autoplay loop>
-    <source src="https://cdn.jsdelivr.net/gh/angelolumague/ilovemygirlfriendsomuch/love-song.mp3" type="audio/mpeg">
-</audio>
+        <source src="https://cdn.jsdelivr.net/gh/angelolumague/ilovemygirlfriendsomuch/love-song.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container text-center">
         <h1 class="header_text">Hurrayyyy!!</h1>
         <div class="gif_container">
             <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" class="img-fluid" alt="Cute animated illustration">
         </div>
-        <h1>💖 Please open this        link on Feb 14 💖</h1>
+        <h1>💖 Please open this link on Feb 14 💖</h1>
         <a href="love-story.html" class="btn btn-custom">Click here to view our Love Story 💕</a>
     </div>
     
