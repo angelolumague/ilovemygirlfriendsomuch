@@ -71,6 +71,7 @@
             transition: 0.5s;
             background-color: #ffb6c1;
             color: #ff1493;
+            position: relative; /* Keeps it in the container */
         }
 
         /* Fix layout on small screens */
@@ -90,9 +91,6 @@
                 max-width: 200px;
                 padding: 10px 20px;
                 font-size: 14px;
-            }
-            #noButton {
-                position: relative; /* Remove absolute positioning */
             }
         }
     </style>
@@ -117,17 +115,15 @@
         
         function moveButton() {
             var btn = document.getElementById('noButton');
+            var container = document.querySelector('.container');
 
-            // Prevent button movement on small screens
-            if (window.innerWidth <= 480) {
-                return;
-            }
+            var maxX = container.clientWidth - btn.clientWidth;
+            var maxY = container.clientHeight - btn.clientHeight;
 
-            var x = Math.random() * (window.innerWidth - btn.offsetWidth) - 85;
-            var y = Math.random() * (window.innerHeight - btn.offsetHeight) - 48;
-            btn.style.position = "absolute";
-            btn.style.left = `${x}px`;
-            btn.style.top = `${y}px`;
+            var x = Math.random() * maxX;
+            var y = Math.random() * maxY;
+
+            btn.style.transform = `translate(${x}px, ${y}px)`;
         }
     </script>
 </body> 
