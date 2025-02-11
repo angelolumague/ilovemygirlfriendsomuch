@@ -74,6 +74,7 @@
             color: #ff1493;
         }
 
+        /* Responsive Fix */
         @media only screen and (max-width: 414px) {
             .container {
                 max-width: 90%;
@@ -81,7 +82,13 @@
             .header_text {
                 font-size: 24px;
             }
+            .buttons {
+                flex-direction: column;
+                gap: 10px; /* Adds spacing between buttons */
+            }
             .btn {
+                width: 100%;
+                max-width: 200px; /* Prevents buttons from being too wide */
                 padding: 10px 20px;
                 font-size: 14px;
             }
