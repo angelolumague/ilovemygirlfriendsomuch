@@ -46,6 +46,7 @@
             border: none;
             border-radius: 12px;
             transition: background-color 0.3s ease;
+            display: inline-block;
         }
         .btn-custom:hover {
             background-color: #ff1493;
@@ -58,21 +59,6 @@
             justify-content: center;
         }
     </style>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var today = new Date();
-            var valentineDate = new Date(today.getFullYear(), 1, 14); // February 14
-
-            // Remove time part for accurate comparison
-            today.setHours(0, 0, 0, 0);
-            valentineDate.setHours(0, 0, 0, 0);
-
-            if (today < valentineDate) {
-                window.location.href = "too-early.html"; // Redirect to "Too early" message page
-            }
-        });
-    </script>
 </head>
 <body>
     <audio autoplay loop>
@@ -85,9 +71,24 @@
             <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" class="img-fluid" alt="Cute animated illustration">
         </div>
         <h1>💖 Please open this link on Feb 14 💖</h1>
-        <a href="love-story.html" class="btn btn-custom">Click here to view our Love Story 💕</a>
+        <a href="#" class="btn btn-custom" onclick="checkDate(event)">Click here to view our Love Story 💕</a>
     </div>
-    
+
+    <script>
+        function checkDate(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            var today = new Date();
+            var valentineDate = new Date(today.getFullYear(), 1, 14); // February 14
+
+            if (today < valentineDate) {
+                window.location.href = "too-early.html"; // Redirect if too early
+            } else {
+                window.location.href = "love-story.html"; // Allow access on or after Feb 14
+            }
+        }
+    </script>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
