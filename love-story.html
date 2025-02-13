@@ -32,7 +32,7 @@
             max-width: 100%;
             margin: auto;
         }
-        .photo {
+        .slide {
             display: none;
             width: 100%;
             border-radius: 10px;
@@ -53,30 +53,67 @@
 </audio>
 
     <div class="container text-center">
-        <h1>💕 Our Love Album 💕</h1>
+        <h1>💕Us through the years💕</h1>
         
         <div class="slideshow-container">
-            <img class="photo active img-fluid" src="1.jpg" alt="Memory 1">
-            <img class="photo img-fluid" src="2.jpeg" alt="Memory 2">
-            <img class="photo img-fluid" src="3.jpeg" alt="Memory 3">
-            <img class="photo img-fluid" src="4.jpeg" alt="Memory 4">
-            <img class="photo img-fluid" src="5.jpg" alt="Memory 5">
-            <img class="photo img-fluid" src="6.jpeg" alt="Memory 6">
+            <img class="slide active img-fluid" src="1.jpg" alt="Memory 1">
+            <img class="slide img-fluid" src="2.jpg" alt="Memory 2">
+            <img class="slide img-fluid" src="3.jpg" alt="Memory 3">
+            <img class="slide img-fluid" src="4.jpg" alt="Memory 4">
+            <img class="slide img-fluid" src="5.jpg" alt="Memory 5">
+            <img class="slide img-fluid" src="6.jpg" alt="Memory 6">
+            
+            <!-- Added 33 more images -->
+            <img class="slide img-fluid" src="7.jpg" alt="Memory 7">
+            <img class="slide img-fluid" src="8.jpg" alt="Memory 8">
+            <img class="slide img-fluid" src="9.jpg" alt="Memory 9">
+            
+            <!-- Adding videos -->
+            <video class="slide img-fluid" controls>
+                <source src="40.mp4" type="video/mp4">
+            </video>
+            <video class="slide img-fluid" controls>
+                <source src="41.mp4" type="video/mp4">
+            </video>
+            <video class="slide img-fluid" controls>
+                <source src="42.mp4" type="video/mp4">
+            </video>
+            <video class="slide img-fluid" controls>
+                <source src="43.mp4" type="video/mp4">
+            </video>
+            
         </div>
         
         <div class="quote">"Every moment with you is my favorite moment. I love you endlessly." 💖</div>
     </div>
     
     <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.photo');
-        function showSlides() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
-            setTimeout(showSlides, 3000); 
-        }
-        showSlides();
+        window.onload = function() {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            function showSlides() {
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                    if (slide.tagName === 'VIDEO') {
+                        slide.pause();
+                        slide.currentTime = 0;
+                    }
+                });
+                
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].classList.add('active');
+                
+                if (slides[slideIndex].tagName === 'VIDEO') {
+                    slides[slideIndex].play();
+                    setTimeout(showSlides, slides[slideIndex].duration * 1000 + 1000);
+                } else {
+                    setTimeout(showSlides, 3000);
+                }
+            }
+            
+            showSlides();
+        };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
